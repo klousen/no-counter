@@ -7,6 +7,9 @@ saying no: every time you turn something down, press the button.
 
 - A big red emergency-stop style button with sound, vibration and a little
   "NO!" burst on every press
+- A different slogan around the button every time you open the app
+  ("Protect your peace", "Your time, your rules", "Say no without guilt",
+  "Boundaries are healthy")
 - Today's count, shown as a number and as tally marks in groups of five
 - An encouraging line after each press, plus milestone messages
   (1, 5, 10, 25, 50, 100, 250, 500 nos)

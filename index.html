@@ -223,7 +223,7 @@
     <div class="housing">
       <svg class="ring-text" viewBox="0 0 300 300" aria-hidden="true">
         <defs><path id="ring" d="M150,150 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"></path></defs>
-        <text><textPath href="#ring" textLength="798" lengthAdjust="spacing">PROTECT YOUR PEACE · PROTECT YOUR PEACE · PROTECT YOUR PEACE · PROTECT YOUR PEACE · </textPath></text>
+        <text><textPath id="ringText" href="#ring" textLength="798" lengthAdjust="spacing">PROTECT YOUR PEACE · PROTECT YOUR PEACE · PROTECT YOUR PEACE · PROTECT YOUR PEACE · </textPath></text>
       </svg>
       <button class="no-btn" id="noBtn" type="button" aria-label="I said no – count it">NO</button>
     </div>
@@ -283,10 +283,16 @@
     250: "250 nos. People know where they stand with you.",
     500: "500 nos. You're a role model."
   };
+  const SLOGANS = [
+    "PROTECT YOUR PEACE",
+    "YOUR TIME, YOUR RULES",
+    "SAY NO WITHOUT GUILT",
+    "BOUNDARIES ARE HEALTHY"
+  ];
   const BURSTS = ["NO!", "Nope.", "Nah.", "No thanks.", "Pass.", "Count me out.", "Not today."];
 
   const $ = (id) => document.getElementById(id);
-  let state = { events: [], goal: 3, sound: true };
+  let state = { events: [], goal: 3, sound: true, lastSlogan: -1 };
   let sessionAdds = 0;
 
   function load() {
@@ -297,6 +303,7 @@
         if (Array.isArray(s.events)) state.events = s.events.filter(n => typeof n === "number");
         if (Number.isInteger(s.goal)) state.goal = Math.min(20, Math.max(1, s.goal));
         if (typeof s.sound === "boolean") state.sound = s.sound;
+        if (Number.isInteger(s.lastSlogan)) state.lastSlogan = s.lastSlogan;
       }
     } catch (e) {}
   }
@@ -445,7 +452,19 @@
   document.addEventListener("visibilitychange", () => { if (!document.hidden) render(); });
   setInterval(render, 60000);
 
+  // A different slogan around the button every time the app opens
+  function pickSlogan() {
+    let i = Math.floor(Math.random() * SLOGANS.length);
+    if (i === state.lastSlogan) i = (i + 1 + Math.floor(Math.random() * (SLOGANS.length - 1))) % SLOGANS.length;
+    state.lastSlogan = i;
+    save();
+    const unit = SLOGANS[i] + " · ";
+    const reps = Math.max(1, Math.round(84 / unit.length));
+    $("ringText").textContent = unit.repeat(reps);
+  }
+
   load();
+  pickSlogan();
   render();
 
   if ("serviceWorker" in navigator) {
