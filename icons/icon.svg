@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="cap" cx="0.36" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#FF5A45"/>
+      <stop offset="0.45" stop-color="#D8261C"/>
+      <stop offset="1" stop-color="#9E150E"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" fill="#F2C200"/>
+  <circle cx="256" cy="272" r="170" fill="#6E0D08"/>
+  <circle cx="256" cy="252" r="170" fill="url(#cap)"/>
+  <text x="256" y="292" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="118" fill="#FFF3EF">NO</text>
+</svg>
