@@ -1,10 +1,9 @@
 // Bump the version whenever an app file changes so clients pick up the update.
-const CACHE = "no-button-v2";
+const CACHE = "no-button-v3";
 const APP_SHELL = [
   "./",
   "index.html",
   "manifest.webmanifest",
-  "icons/icon.svg",
   "icons/icon-192.png",
   "icons/icon-512.png",
   "icons/apple-touch-icon.png",

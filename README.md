@@ -17,7 +17,8 @@ saying no: every time you turn something down, press the button.
 - Stats for this week, all time and your day streak
 - Undo for accidental presses, and a sound toggle
 - Light and dark mode
-- Installable on your home screen and works offline
+- Installable on your home screen, with its own icon and launch screen,
+  and works offline
 
 ## Privacy
 
@@ -54,6 +55,9 @@ Pages on every push to `main`. Turn it on once under
 
 After changing any app file, bump `CACHE` in `sw.js` so installed copies
 pick up the update.
+
+The icons in `icons/` and the iPhone launch screens in `icons/splash/` are
+rendered from the app's own button styling.
 
 ## Install on your phone
 
