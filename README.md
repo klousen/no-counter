@@ -25,6 +25,16 @@ Everything stays on your device. Your count lives in the browser's
 `localStorage`; there is no server, no account and no tracking.
 Clearing your browser data resets the count.
 
+The app makes no requests to third parties. The fonts are self-hosted
+in `fonts/`, and a Content Security Policy blocks loading anything from
+other domains.
+
+## Fonts
+
+- [Bricolage Grotesque](https://github.com/ateliertriay/bricolage) and
+  [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono), both under
+  the SIL Open Font License 1.1 (licence texts in `fonts/`)
+
 ## Run locally
 
 It's plain HTML, CSS and JavaScript with no build step. The service worker

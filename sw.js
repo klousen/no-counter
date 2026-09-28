@@ -1,5 +1,5 @@
 // Bump the version whenever an app file changes so clients pick up the update.
-const CACHE = "no-button-v1";
+const CACHE = "no-button-v2";
 const APP_SHELL = [
   "./",
   "index.html",
@@ -7,7 +7,9 @@ const APP_SHELL = [
   "icons/icon.svg",
   "icons/icon-192.png",
   "icons/icon-512.png",
-  "icons/apple-touch-icon.png"
+  "icons/apple-touch-icon.png",
+  "fonts/bricolage-grotesque-latin.woff2",
+  "fonts/jetbrains-mono-latin.woff2"
 ];
 
 self.addEventListener("install", (event) => {
@@ -42,13 +44,13 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Everything else (icons, Google Fonts): cache first, fill the cache on first use.
+  // Everything else (icons, fonts): cache first, fill the cache on first use.
   event.respondWith(
     caches.match(req).then(
       (hit) =>
         hit ||
         fetch(req).then((res) => {
-          if (res.ok || res.type === "opaque") {
+          if (res.ok) {
             const copy = res.clone();
             caches.open(CACHE).then((cache) => cache.put(req, copy));
           }
